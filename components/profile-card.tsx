@@ -1,5 +1,8 @@
-import React from "react";
+"use client";
+
+import * as React from "react";
 import { Eye, Paperclip } from "lucide-react";
+import Image from "next/image";
 
 type ProfileCardProps = {
   variant?: "light" | "dark";
@@ -28,10 +31,13 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
         <div className="relative h-full overflow-hidden rounded-lg">
           {/* Full background image */}
           <div className="aspect-square h-full w-full">
-            <img
+            <Image
               src={profileImage}
               alt={`${name}'s profile`}
               className="h-full w-full object-cover"
+              width={400}
+              height={400}
+              priority
             />
             {/* Gradient overlay for better text visibility */}
             <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
@@ -81,10 +87,13 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
   return (
     <div className="w-80 lg:w-96 rounded-md bg-background border border-border p-1.5 transition-transform ">
       <div className="overflow-hidden rounded-lg">
-        <img
+        <Image
           src={profileImage}
           alt={`${name}'s profile`}
           className="aspect-square w-full object-cover max-h-80"
+          width={400}
+          height={400}
+          priority
         />
       </div>
 
