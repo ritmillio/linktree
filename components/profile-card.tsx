@@ -24,7 +24,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
 }) => {
   if (isFullBg) {
     return (
-      <div className="w-80 rounded-xl bg-[#F3F4F6] p-1.5 dark:bg-[#171717]">
+      <div className="w-80 lg:w-96 h-[28rem] rounded-md bg-background border border-border p-1.5">
         <div className="relative h-full overflow-hidden rounded-lg">
           {/* Full background image */}
           <div className="aspect-square h-full w-full">
@@ -34,7 +34,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
               className="h-full w-full object-cover"
             />
             {/* Gradient overlay for better text visibility */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#171717] to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
           </div>
 
           {/* Content positioned at the bottom */}
@@ -79,12 +79,12 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
   }
 
   return (
-    <div className="w-80 rounded-xl bg-[#F3F4F6] p-1.5 transition-transform dark:bg-[#171717]">
+    <div className="w-80 lg:w-96 rounded-md bg-background border border-border p-1.5 transition-transform ">
       <div className="overflow-hidden rounded-lg">
         <img
           src={profileImage}
           alt={`${name}'s profile`}
-          className="aspect-square w-full object-cover"
+          className="aspect-square w-full object-cover max-h-80"
         />
       </div>
 
@@ -126,31 +126,6 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
           </div>
         </div>
       </div>
-    </div>
-  );
-};
-
-export const ProfileCardDemo = () => {
-  return (
-    <div className="flex flex-col gap-6 p-6 md:flex-row">
-      {/* Regular card */}
-      <ProfileCard
-        name="Sophie Bennett"
-        description="A Product Designer focused on intuitive user experiences."
-        followersCount={312}
-        postsCount={48}
-        verified={true}
-      />
-
-      {/* Full background card */}
-      <ProfileCard
-        name="Sophie Bennett"
-        description="A Product Designer focused on intuitive user experiences."
-        followersCount={312}
-        postsCount={48}
-        verified={true}
-        isFullBg={true}
-      />
     </div>
   );
 };
