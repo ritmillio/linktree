@@ -5,7 +5,6 @@ import { Footer } from "./_components/footer";
 import { ProfileCard } from "@/components/profile-card";
 import { MagneticSocialLinks } from "@/components/magnetic-social-links";
 import { SectionTitle } from "@/components/ui/title";
-import { Carousel } from "@/components/ui/carousel";
 import { Time } from "@/components/time";
 import { Code } from "@/components/code";
 
@@ -27,6 +26,8 @@ import { appConfig } from "@/config";
 import { WavesBlock } from "@/components/waves-block";
 import { TextProfileRotate } from "@/components/text-profile-rotate";
 import { GalleryShowcase } from "@/components/photo-gallery";
+import { AlertLiveEvent } from "@/components/alert-live-event";
+import { Calendar } from "@/components/calendar";
 
 export default function Home() {
   return (
@@ -55,11 +56,13 @@ export default function Home() {
         </Card>
 
         <Code />
+        <Calendar />
         <TextProfileRotate />
         <WavesBlock />
 
         {/* LINKS SECTION */}
         <SectionTitle title="Links" className="mt-10" />
+        <AlertLiveEvent />
         <Link
           href="https://zoltanfodor.notion.site/Toasted-Links-206e0ba40a7280b8bd4bc04f6253a91d?pvs=73"
           title="Toasted Links - Notion"
@@ -102,14 +105,31 @@ export default function Home() {
 
         {/* WORK SECTION */}
         <SectionTitle title="Digital Work" className="mt-10" />
-        <Carousel
-          baseWidth={300}
-          autoplay={true}
-          autoplayDelay={3000}
-          pauseOnHover={true}
-          loop={true}
-          round={false}
-        />
+        <p className="text-center text-xs leading-4 text-muted-foreground w-80 lg:w-96 mx-auto py-5 bg-background border border-border rounded-md flex items-center justify-center px-2.5">
+          I create and sell various digital products including premium UI
+          components, website templates, and design systems. Each product is
+          crafted with attention to detail and modern development practices.
+          Check out my store for high-quality digital assets that can elevate
+          your projects.
+        </p>
+        <div className="w-80 lg:w-96">
+          <div className="w-full flex items-center justify-between gap-2.5">
+            <div className="w-1/2 text-center text-xs leading-4 text-muted-foreground lg:w-96 mx-auto py-5 bg-background border border-border rounded-md flex items-center justify-center px-2.5">
+              <span className="text-zinc-50">toasty</span>
+              <span className="bg-indigo-800  text-zinc-200">y</span>
+              <span className="bg-orange-600  text-zinc-50">y</span>
+            </div>
+            <a
+              className="w-1/2 text-center text-xs leading-4 lg:w-96 mx-auto py-5 bg-background border border-border rounded-md flex items-center justify-center px-2.5"
+              href="https://toasted.studio/"
+              target="_blank"
+            >
+              <span className="bg-amber-300 text-black hover:cursor-grab hover:underline">
+                ui.toasted.studio
+              </span>
+            </a>
+          </div>
+        </div>
 
         {/* Music */}
         <SectionTitle title="My favorite tunes" className="mt-10" />
@@ -137,7 +157,9 @@ export default function Home() {
         <GalleryShowcase />
       </div>
 
-      <Footer />
+      <div className="mt-12 w-full">
+        <Footer />
+      </div>
     </div>
   );
 }

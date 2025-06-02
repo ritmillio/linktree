@@ -11,19 +11,24 @@ export function Header() {
     <header className="relative flex flex-col items-center justify-center gap-2.5 border-b border-border w-full pb-5">
       <Dock
         direction="middle"
-        className="w-80 lg:w-96 flex items-center justify-center bg-background border border-border rounded-md"
+        className="w-80 lg:w-96 flex items-center justify-between bg-background border border-border rounded-md px-2.5 py-2"
       >
         <DockIcon>
+          <span className="text-sm font-bold">Home</span>{" "}
+        </DockIcon>
+        <div className="flex items-center justify-between gap-2.5">
+          <DockIcon>
+            <Icons.googleDrive className="size-6" />
+          </DockIcon>
+          <DockIcon>
+            <Icons.notion className="size-6" />
+          </DockIcon>
+          <DockIcon>
+            <Icons.whatsapp className="size-6" />
+          </DockIcon>
+        </div>
+        <DockIcon>
           <ThemeToggle />
-        </DockIcon>
-        <DockIcon>
-          <Icons.googleDrive className="size-6" />
-        </DockIcon>
-        <DockIcon>
-          <Icons.notion className="size-6" />
-        </DockIcon>
-        <DockIcon>
-          <Icons.whatsapp className="size-6" />
         </DockIcon>
       </Dock>
 

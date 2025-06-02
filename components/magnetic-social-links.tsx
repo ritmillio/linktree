@@ -69,7 +69,6 @@ const SOCIAL_LINKS: SocialLink[] = [
     label: "Mail",
     link: `mailto:${appConfig.email}`,
     icon: Mail,
-    useSecondaryBg: true,
   },
 ];
 
