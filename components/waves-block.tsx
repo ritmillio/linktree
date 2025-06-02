@@ -5,7 +5,7 @@ import { Waves } from "@/components/ui/wave-background";
 
 export function WavesBlock() {
   return (
-    <div className="flex flex-col items-center justify-center w-80 lg:w-96 rounded-md border border-border bg-black overflow-hidden h-32">
+    <div className="flex flex-col items-center justify-center w-80 lg:w-96 rounded-md border dark:border-white/50 border-black/50 bg-black overflow-hidden h-32">
       {/* Centered content with aspect ratio */}
       <div className="w-full flex flex-col items-center">
         {/* Top border - thin white line */}

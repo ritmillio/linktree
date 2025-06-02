@@ -2,12 +2,13 @@ import React from "react";
 
 import { Dock, DockIcon } from "@/components/ui/dock";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Time } from "@/components/time";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
 export function Header() {
   return (
-    <header className="relative">
+    <header className="relative flex flex-col items-center justify-center gap-2.5 border-b border-border w-full pb-5">
       <Dock
         direction="middle"
         className="w-80 lg:w-96 flex items-center justify-center bg-background border border-border rounded-md"
@@ -25,6 +26,8 @@ export function Header() {
           <Icons.whatsapp className="size-6" />
         </DockIcon>
       </Dock>
+
+      <Time timeZone="Europe/Vienna" />
     </header>
   );
 }

@@ -10,7 +10,7 @@ export function TextProfileRotate() {
       <LayoutGroup>
         <motion.div className="flex whitespace-pre" layout>
           <motion.span
-            className="pt-0.5 sm:pt-1 md:pt-2 text-white"
+            className="pt-0.5 sm:pt-1 md:pt-2 text-black dark:text-white"
             layout
             transition={{ type: "spring", damping: 30, stiffness: 400 }}
           >
@@ -25,7 +25,7 @@ export function TextProfileRotate() {
               "FUN",
               "and MORE 🕶️",
             ]}
-            mainClassName="text-white px-2 sm:px-2 md:px-3 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+            mainClassName="text-black dark:text-white px-2 sm:px-2 md:px-3 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-md"
             staggerFrom={"last"}
             initial={{ y: "100%" }}
             animate={{ y: 0 }}

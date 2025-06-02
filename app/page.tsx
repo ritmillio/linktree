@@ -22,7 +22,7 @@ import {
   SiNotion,
 } from "@icons-pack/react-simple-icons";
 import { Link } from "@/components/ui/link";
-import { Code2, MessageSquare } from "lucide-react";
+import { Code2 } from "lucide-react";
 import { appConfig } from "@/config";
 import { WavesBlock } from "@/components/waves-block";
 import { TextProfileRotate } from "@/components/text-profile-rotate";
@@ -32,9 +32,8 @@ export default function Home() {
   return (
     <div className="mx-auto max-w-xl min-h-screen flex flex-col items-center justify-center dark:bg-black bg-white gap-2.5">
       <Header />
-      <Time timeZone="Europe/Vienna" />
 
-      <div className="flex-1 w-full flex flex-col items-center gap-2.5">
+      <div className="flex-1 w-full flex flex-col items-center gap-2.5 pt-5">
         <ProfileCard
           name="Sophie Bennett"
           description="A Product Designer focused on intuitive user experiences."
