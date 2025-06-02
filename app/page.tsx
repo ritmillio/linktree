@@ -24,6 +24,8 @@ import {
 import { Link } from "@/components/ui/link";
 import { Code2, MessageSquare } from "lucide-react";
 import { appConfig } from "@/config";
+import { WavesBlock } from "@/components/waves-block";
+import { TextProfileRotate } from "@/components/text-profile-rotate";
 
 export default function Home() {
   return (
@@ -52,6 +54,9 @@ export default function Home() {
         </Card>
 
         <Code />
+        <TextProfileRotate />
+        <WavesBlock />
+
         {/* LINKS SECTION */}
         <SectionTitle title="Links" className="mt-10" />
         <Link
@@ -60,25 +65,6 @@ export default function Home() {
           description="Notion"
           icon={<SiNotion />}
           external
-        />
-        {/* Music */}
-        <MusicPlatformButton
-          link="https://music.youtube.com/watch?v=njBKk2sCmeY&si=XqDJrV11Dnha6mgr"
-          platformName="YouTube Music"
-          customText="My favorite songs on YouTube"
-          platformIcon={<SiYoutubemusic />}
-        />
-        <MusicPlatformButton
-          link="https://tidal.com/browse/playlist/1000000000000000000000000000000000000000"
-          platformName="Tidal"
-          customText="Premium playlist on Tidal"
-          platformIcon={<SiTidal />}
-        />
-        <MusicPlatformButton
-          link="https://open.spotify.com/show/7iQXmUT7XGuZSzAMjoNWlX?si=51bc5a30e80744d8"
-          platformName="Spotify"
-          customText="My favorite Podcast - The Diary of a CEO"
-          platformIcon={<SiSpotify />}
         />
         <Link
           href={`https://buymeacoffee.com/${appConfig.tag}`}
@@ -122,6 +108,27 @@ export default function Home() {
           pauseOnHover={true}
           loop={true}
           round={false}
+        />
+
+        {/* Music */}
+        <SectionTitle title="My favorite tunes" className="mt-10" />
+        <MusicPlatformButton
+          link="https://music.youtube.com/watch?v=njBKk2sCmeY&si=XqDJrV11Dnha6mgr"
+          platformName="YouTube Music"
+          customText="My favorite songs on YouTube"
+          platformIcon={<SiYoutubemusic />}
+        />
+        <MusicPlatformButton
+          link="https://tidal.com/browse/playlist/1000000000000000000000000000000000000000"
+          platformName="Tidal"
+          customText="Premium playlist on Tidal"
+          platformIcon={<SiTidal />}
+        />
+        <MusicPlatformButton
+          link="https://open.spotify.com/show/7iQXmUT7XGuZSzAMjoNWlX?si=51bc5a30e80744d8"
+          platformName="Spotify"
+          customText="My favorite Podcast - The Diary of a CEO"
+          platformIcon={<SiSpotify />}
         />
       </div>
 
