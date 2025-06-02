@@ -11,7 +11,7 @@ import { Time } from "@/components/time";
 import { Card, CardDescription, CardHeader } from "@/components/ui/card";
 
 /** Music */
-import MusicPlatformButton from "@/components/music-link";
+import { MusicPlatformButton } from "@/components/ui/music-link";
 import {
   SiYoutubemusic,
   SiTidal,
