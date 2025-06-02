@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useId } from "react";
 import {
   type MotionValue,
@@ -37,30 +38,24 @@ function Digit({ value, place }: { value: number; place: number }) {
 
 function Number({ mv, number }: { mv: MotionValue<number>; number: number }) {
   const uniqueId = useId();
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
   const [ref, bounds] = useMeasure();
 
   const y = useTransform(mv, (latest) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     if (!bounds?.height) return 0;
     const placeValue = latest % 10;
     const offset = (10 + number - placeValue) % 10;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     let memo = offset * bounds.height;
 
     if (offset > 5) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       memo -= 10 * bounds.height;
     }
 
     return memo;
   });
 
-  // don't render the animated number until we know the height
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  // don't render the animated number until we know the heigh
   if (!bounds.height) {
     return (
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       <span ref={ref} className="invisible absolute">
         {number}
       </span>
@@ -73,7 +68,6 @@ function Number({ mv, number }: { mv: MotionValue<number>; number: number }) {
       layoutId={`${uniqueId}-${number}`}
       className="absolute inset-0 flex items-center justify-center"
       transition={TRANSITION}
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       ref={ref}
     >
       {number}
@@ -99,7 +93,7 @@ export function SlidingNumber({
     padStart && integerValue < 10 ? `0${integerPart}` : integerPart;
   const integerDigits = paddedInteger?.split("") ?? [];
   const integerPlaces = integerDigits.map((_, i) =>
-    Math.pow(10, integerDigits.length - i - 1),
+    Math.pow(10, integerDigits.length - i - 1)
   );
 
   return (

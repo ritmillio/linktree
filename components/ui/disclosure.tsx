@@ -129,10 +129,10 @@ export function DisclosureTrigger({
               },
               className: cn(
                 className,
-                //@ts-ignore
+                // @ts-expect-error - React.cloneElement typing doesn't account for arbitrary props
                 (child as React.ReactElement).props.className
               ),
-              //@ts-ignore
+              // @ts-expect-error - Spreading props from cloned element is safe here
               ...(child as React.ReactElement).props,
             })
           : child;
@@ -186,9 +186,12 @@ export function DisclosureContent({
   );
 }
 
-export default {
+// Export as named object to avoid anonymous default export warning
+const DisclosureComponents = {
   Disclosure,
   DisclosureProvider,
   DisclosureTrigger,
   DisclosureContent,
 };
+
+export default DisclosureComponents;

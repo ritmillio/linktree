@@ -5,7 +5,6 @@ import { Footer } from "./_components/footer";
 import { ProfileCard } from "@/components/profile-card";
 import { MagneticSocialLinks } from "@/components/magnetic-social-links";
 import { SectionTitle } from "@/components/ui/title";
-import { Time } from "@/components/time";
 import { Code } from "@/components/code";
 
 import { Card, CardDescription, CardHeader } from "@/components/ui/card";
@@ -48,9 +47,10 @@ export default function Home() {
         <Card className="w-80 lg:w-96">
           <CardHeader className="px-2.5 py-4">
             <CardDescription className="text-sm text-black/75 dark:text-white/75">
-              I'm a product designer focused on intuitive user experiences. I'm
-              currently working at <a href="https://www.google.com">Google</a>{" "}
-              as a product designer....
+              I&apos;m a product designer focused on intuitive user experiences.
+              I&apos;m currently working at{" "}
+              <a href="https://www.google.com">Google</a> as a product
+              designer....
             </CardDescription>
           </CardHeader>
         </Card>

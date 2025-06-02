@@ -28,8 +28,8 @@ export function Time({ timeZone, label }: TimeProps) {
         minutes: timeInTimezone.getMinutes(),
         seconds: timeInTimezone.getSeconds(),
       };
-    } catch (err) {
-      console.error(`Invalid timezone: ${tz}`);
+    } catch (err: unknown) {
+      console.error(`Invalid timezone: ${tz}`, err);
       return {
         hours: 0,
         minutes: 0,
@@ -50,7 +50,7 @@ export function Time({ timeZone, label }: TimeProps) {
         setMinutes(time.minutes);
         setSeconds(time.seconds);
         setError("");
-      } catch (err) {
+      } catch (err: unknown) {
         setError(err instanceof Error ? err.message : "Failed to get time");
       }
     };

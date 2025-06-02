@@ -124,10 +124,15 @@ export function SimpleWeather({
   const [weather, setWeather] = React.useState<SimpleWeatherData | null>(null);
   const [loading, setLoading] = React.useState<boolean>(true);
   const [error, setError] = React.useState<string | null>(null);
-  const location = {
-    latitude: appConfig.location.latitude,
-    longitude: appConfig.location.longitude,
-  };
+
+  // Memoize the location object to prevent unnecessary re-renders
+  const location = React.useMemo(
+    () => ({
+      latitude: appConfig.location.latitude,
+      longitude: appConfig.location.longitude,
+    }),
+    []
+  );
 
   const fetchWeather = React.useCallback(
     async (latitude: number, longitude: number) => {
@@ -188,7 +193,7 @@ export function SimpleWeather({
         (position) => {
           fetchWeather(position.coords.latitude, position.coords.longitude);
         },
-        (geoError) => {
+        () => {
           if (fallbackLocation) {
             fetchWeather(fallbackLocation.latitude, fallbackLocation.longitude);
           } else {

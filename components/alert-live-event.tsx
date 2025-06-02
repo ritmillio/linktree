@@ -1,6 +1,5 @@
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import { Radio, X } from "lucide-react";
 import { SiTwitch } from "@icons-pack/react-simple-icons";
 
 function AlertLiveEvent() {

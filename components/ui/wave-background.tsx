@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { createNoise2D } from "simplex-noise";
 
 interface Point {
@@ -43,42 +43,13 @@ export function Waves({
     set: false,
   });
   const pathsRef = useRef<SVGPathElement[]>([]);
-  const linesRef = useRef<Point[][]>([]); // 替换any为Point[][]
-  const noiseRef = useRef<((x: number, y: number) => number) | null>(null); // 替换any为具体的函数类型
+  const linesRef = useRef<Point[][]>([]);
+  const noiseRef = useRef<((x: number, y: number) => number) | null>(null);
   const rafRef = useRef<number | null>(null);
   const boundingRef = useRef<DOMRect | null>(null);
 
-  // Initialization
-  useEffect(() => {
-    if (!containerRef.current || !svgRef.current) return;
-
-    // Initialize noise generator
-    noiseRef.current = createNoise2D();
-
-    // Initialize size and lines
-    setSize();
-    setLines();
-
-    // Bind events
-    window.addEventListener("resize", onResize);
-    window.addEventListener("mousemove", onMouseMove);
-    containerRef.current.addEventListener("touchmove", onTouchMove, {
-      passive: false,
-    });
-
-    // Start animation
-    rafRef.current = requestAnimationFrame(tick);
-
-    return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      window.removeEventListener("resize", onResize);
-      window.removeEventListener("mousemove", onMouseMove);
-      containerRef.current?.removeEventListener("touchmove", onTouchMove);
-    };
-  }, []);
-
   // Set SVG size
-  const setSize = () => {
+  const setSize = useCallback(() => {
     if (!containerRef.current || !svgRef.current) return;
 
     boundingRef.current = containerRef.current.getBoundingClientRect();
@@ -86,10 +57,10 @@ export function Waves({
 
     svgRef.current.style.width = `${width}px`;
     svgRef.current.style.height = `${height}px`;
-  };
+  }, []);
 
   // Setup lines - more points for smoother curves
-  const setLines = () => {
+  const setLines = useCallback(() => {
     if (!svgRef.current || !boundingRef.current) return;
 
     const { width, height } = boundingRef.current;
@@ -146,28 +117,10 @@ export function Waves({
       // Add points
       linesRef.current.push(points);
     }
-  };
-
-  // Resize handler
-  const onResize = () => {
-    setSize();
-    setLines();
-  };
-
-  // Mouse handler
-  const onMouseMove = (e: MouseEvent) => {
-    updateMousePosition(e.pageX, e.pageY);
-  };
-
-  // Touch handler
-  const onTouchMove = (e: TouchEvent) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    updateMousePosition(touch.clientX, touch.clientY);
-  };
+  }, [strokeColor]);
 
   // Update mouse position
-  const updateMousePosition = (x: number, y: number) => {
+  const updateMousePosition = useCallback((x: number, y: number) => {
     if (!boundingRef.current) return;
 
     const mouse = mouseRef.current;
@@ -188,10 +141,34 @@ export function Waves({
       containerRef.current.style.setProperty("--x", `${mouse.sx}px`);
       containerRef.current.style.setProperty("--y", `${mouse.sy}px`);
     }
-  };
+  }, []);
+
+  // Resize handler
+  const onResize = useCallback(() => {
+    setSize();
+    setLines();
+  }, [setSize, setLines]);
+
+  // Mouse handler
+  const onMouseMove = useCallback(
+    (e: MouseEvent) => {
+      updateMousePosition(e.pageX, e.pageY);
+    },
+    [updateMousePosition]
+  );
+
+  // Touch handler
+  const onTouchMove = useCallback(
+    (e: TouchEvent) => {
+      e.preventDefault();
+      const touch = e.touches[0];
+      updateMousePosition(touch.clientX, touch.clientY);
+    },
+    [updateMousePosition]
+  );
 
   // Move points - smoother wave motion
-  const movePoints = (time: number) => {
+  const movePoints = useCallback((time: number) => {
     const { current: lines } = linesRef;
     const { current: mouse } = mouseRef;
     const { current: noise } = noiseRef;
@@ -237,20 +214,20 @@ export function Waves({
         p.cursor.y = Math.min(50, Math.max(-50, p.cursor.y)); // Limited deformation range
       });
     });
-  };
+  }, []);
 
   // Get moved point coordinates
-  const moved = (point: Point, withCursorForce = true) => {
+  const moved = useCallback((point: Point, withCursorForce = true) => {
     const coords = {
       x: point.x + point.wave.x + (withCursorForce ? point.cursor.x : 0),
       y: point.y + point.wave.y + (withCursorForce ? point.cursor.y : 0),
     };
 
     return coords;
-  };
+  }, []);
 
   // Draw lines - using line segments
-  const drawLines = () => {
+  const drawLines = useCallback(() => {
     const { current: lines } = linesRef;
     const { current: paths } = pathsRef;
 
@@ -269,43 +246,76 @@ export function Waves({
 
       paths[lIndex].setAttribute("d", d);
     });
-  };
+  }, [moved]);
 
   // Animation logic
-  const tick = (time: number) => {
-    const { current: mouse } = mouseRef;
+  const tick = useCallback(
+    (time: number) => {
+      const { current: mouse } = mouseRef;
 
-    // Smooth mouse movement
-    mouse.sx += (mouse.x - mouse.sx) * 0.1;
-    mouse.sy += (mouse.y - mouse.sy) * 0.1;
+      // Smooth mouse movement
+      mouse.sx += (mouse.x - mouse.sx) * 0.1;
+      mouse.sy += (mouse.y - mouse.sy) * 0.1;
 
-    // Mouse velocity
-    const dx = mouse.x - mouse.lx;
-    const dy = mouse.y - mouse.ly;
-    const d = Math.hypot(dx, dy);
+      // Mouse velocity
+      const dx = mouse.x - mouse.lx;
+      const dy = mouse.y - mouse.ly;
+      const d = Math.hypot(dx, dy);
 
-    mouse.v = d;
-    mouse.vs += (d - mouse.vs) * 0.1;
-    mouse.vs = Math.min(100, mouse.vs);
+      mouse.v = d;
+      mouse.vs += (d - mouse.vs) * 0.1;
+      mouse.vs = Math.min(100, mouse.vs);
 
-    // Previous mouse position
-    mouse.lx = mouse.x;
-    mouse.ly = mouse.y;
+      // Previous mouse position
+      mouse.lx = mouse.x;
+      mouse.ly = mouse.y;
 
-    // Mouse angle
-    mouse.a = Math.atan2(dy, dx);
+      // Mouse angle
+      mouse.a = Math.atan2(dy, dx);
 
-    // Animation
-    if (containerRef.current) {
-      containerRef.current.style.setProperty("--x", `${mouse.sx}px`);
-      containerRef.current.style.setProperty("--y", `${mouse.sy}px`);
-    }
+      // Animation
+      if (containerRef.current) {
+        containerRef.current.style.setProperty("--x", `${mouse.sx}px`);
+        containerRef.current.style.setProperty("--y", `${mouse.sy}px`);
+      }
 
-    movePoints(time);
-    drawLines();
+      movePoints(time);
+      drawLines();
 
+      rafRef.current = requestAnimationFrame(tick);
+    },
+    [movePoints, drawLines]
+  );
+
+  // Initialization
+  useEffect(() => {
+    const containerElement = containerRef.current;
+    if (!containerElement || !svgRef.current) return;
+
+    // Initialize noise generator
+    noiseRef.current = createNoise2D();
+
+    // Initialize size and lines
+    setSize();
+    setLines();
+
+    // Bind events
+    window.addEventListener("resize", onResize);
+    window.addEventListener("mousemove", onMouseMove);
+    containerElement.addEventListener("touchmove", onTouchMove, {
+      passive: false,
+    });
+
+    // Start animation
     rafRef.current = requestAnimationFrame(tick);
-  };
+
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("mousemove", onMouseMove);
+      containerElement.removeEventListener("touchmove", onTouchMove);
+    };
+  }, [onResize, onMouseMove, onTouchMove, setSize, setLines, tick]);
 
   return (
     <div

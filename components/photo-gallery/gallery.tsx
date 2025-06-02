@@ -1,7 +1,7 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 import {
   Carousel,
@@ -22,8 +22,6 @@ export interface Gallery4Props {
 
 const Gallery4 = ({ items }: Gallery4Props) => {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -31,8 +29,6 @@ const Gallery4 = ({ items }: Gallery4Props) => {
       return;
     }
     const updateSelection = () => {
-      setCanScrollPrev(carouselApi.canScrollPrev());
-      setCanScrollNext(carouselApi.canScrollNext());
       setCurrentSlide(carouselApi.selectedScrollSnap());
     };
     updateSelection();
@@ -58,10 +54,16 @@ const Gallery4 = ({ items }: Gallery4Props) => {
               <CarouselItem key={item.id} className="basis-full">
                 <a href={item.href} className="group rounded-md block">
                   <div className="group relative h-full min-h-[27rem] w-full overflow-hidden rounded-md md:aspect-[5/4] lg:aspect-[16/9]">
-                    <img
+                    <Image
                       src={item.image}
                       alt={item.id}
-                      className="absolute h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105 opacity-80"
+                      fill
+                      sizes="(max-width: 768px) 320px, (max-width: 1024px) 384px, 384px"
+                      className="object-cover object-center transition-transform duration-300 group-hover:scale-105 opacity-80"
+                      priority={
+                        currentSlide ===
+                        items.findIndex((i) => i.id === item.id)
+                      }
                     />
                     {/* Grain overlay for crisp texture */}
                     <div
