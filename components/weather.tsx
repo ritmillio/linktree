@@ -83,7 +83,7 @@ const mapWeatherType = (condition: string): WeatherType => {
  * Get weather icon based on type and time of day
  */
 const getWeatherIcon = (type: WeatherType, isDay: boolean) => {
-  const iconClass = "h-6 w-6";
+  const iconClass = "h-4 w-4";
 
   switch (type) {
     case "clear":
@@ -208,22 +208,15 @@ export function SimpleWeather({
   }, [getUserLocation]);
 
   if (loading) {
-    return (
-      <div className="flex items-center gap-2 text-sm text-gray-600">
-        <div className="animate-spin h-4 w-4 border-2 border-gray-300 border-t-gray-600 rounded-full"></div>
-        Loading weather...
-      </div>
-    );
+    return null;
   }
 
   if (error) {
-    return <div className="text-sm text-red-600">Error: {error}</div>;
+    return null;
   }
 
   if (!weather) {
-    return (
-      <div className="text-sm text-gray-600">No weather data available</div>
-    );
+    return null;
   }
 
   const temperatureDisplay =
@@ -232,62 +225,12 @@ export function SimpleWeather({
       : `${weather.temperature}°C`;
 
   return (
-    <div className="flex items-center gap-2 text-sm">
+    <div className="flex items-center gap-2 ml-1">
+      <span className="text-xs text-black/75 dark:text-white/75">-</span>
       {getWeatherIcon(weather.weatherType, weather.isDay)}
-      <span className="font-medium">{temperatureDisplay}</span>
-      <span className="text-gray-600">{weather.city}</span>
-    </div>
-  );
-}
-
-// Example usage component
-export function SimpleWeatherExample() {
-  const handleWeatherLoaded = (
-    data: SimpleWeatherData & { temperatureDisplay: string }
-  ) => {
-    console.log("Weather loaded:", data);
-  };
-
-  const handleError = (error: string) => {
-    console.error("Weather error:", error);
-  };
-
-  return (
-    <div className="p-4 space-y-4">
-      <h2 className="text-lg font-semibold">Simple Weather Component</h2>
-
-      <div className="space-y-2">
-        <p>Celsius (default):</p>
-        <SimpleWeather
-          apiKey="your-api-key-here"
-          unit="celsius"
-          onWeatherLoaded={handleWeatherLoaded}
-          onError={handleError}
-          fallbackLocation={{ latitude: 40.7128, longitude: -74.006 }} // NYC fallback
-        />
-      </div>
-
-      <div className="space-y-2">
-        <p>Fahrenheit:</p>
-        <SimpleWeather
-          apiKey="your-api-key-here"
-          unit="fahrenheit"
-          onWeatherLoaded={handleWeatherLoaded}
-          onError={handleError}
-          fallbackLocation={{ latitude: 40.7128, longitude: -74.006 }} // NYC fallback
-        />
-      </div>
-
-      <div className="mt-4 p-3 bg-gray-100 rounded text-xs">
-        <p>
-          <strong>Note:</strong> Replace "your-api-key-here" with your actual
-          OpenWeatherMap API key.
-        </p>
-        <p>
-          The component returns: Icon + Temperature + City name in a simple
-          inline format.
-        </p>
-      </div>
+      <span className="text-xs text-black/75 dark:text-white/75">
+        {temperatureDisplay}
+      </span>
     </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import { SlidingNumber } from "@/components/ui/sliding-number";
 import { useEffect, useState } from "react";
+import { SimpleWeather } from "@/components/weather";
 
 interface TimeProps {
   timeZone?: string;
@@ -72,11 +73,14 @@ export function Time({ timeZone, label }: TimeProps) {
         <SlidingNumber value={seconds} padStart={true} />
       </div>
 
-      {(label || timeZone) && (
-        <div className="text-xs text-black/75 dark:text-white/75">
-          {label || timeZone}
-        </div>
-      )}
+      <div className="flex">
+        {(label || timeZone) && (
+          <div className="text-xs text-black/75 dark:text-white/75">
+            {label || timeZone}
+          </div>
+        )}
+        <SimpleWeather apiKey="602eb8e0d8f46c939889cdc2c5ad67ff" />
+      </div>
 
       {error && <div className="text-xs text-red-400">{error}</div>}
     </div>
