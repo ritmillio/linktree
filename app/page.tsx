@@ -88,7 +88,7 @@ export default function Home() {
           title="ShadCN/UI Setup Guide"
           description="Complete installation walkthrough"
           icon={<Code2 />}
-          backgroundColor="bg-gradient-to-r from-black to-black border border-border"
+          backgroundColor="bg-background border border-border"
           backgroundHover="hover:from-black hover:to-black"
           textColor="text-white"
           descriptionColor="text-white/70"
