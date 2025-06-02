@@ -8,25 +8,35 @@ import {
   SiX,
   SiYoutube,
 } from "@icons-pack/react-simple-icons";
+import { Mail } from "lucide-react";
+import { appConfig } from "@/config";
 
 type SocialLink = {
   label: string;
   link: string;
   icon: React.ComponentType<{ size?: number; className?: string }>;
+  useSecondaryBg?: boolean;
 };
 
 function MagneticSocialLink({
   children,
   link,
+  useSecondaryBg = false,
 }: {
   children: React.ReactNode;
   link: string;
+  useSecondaryBg?: boolean;
 }) {
+  const bgClass = useSecondaryBg ? "bg-secondary" : "bg-background";
+  const textClass = useSecondaryBg
+    ? "text-black dark:text-black hover:text-white dark:hover:text-white"
+    : "text-black dark:text-zinc-100";
+
   return (
     <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
       <a
         href={link}
-        className="group relative inline-flex shrink-0 border border-border items-center gap-[1px] rounded-md bg-background px-4 py-2 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:text-zinc-100 dark:hover:bg-zinc-700"
+        className={`group relative inline-flex shrink-0 border border-border items-center gap-[1px] rounded-md ${bgClass} px-4 py-2 text-sm  transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 ${textClass} dark:hover:bg-zinc-700`}
       >
         {children}
       </a>
@@ -55,16 +65,26 @@ const SOCIAL_LINKS: SocialLink[] = [
     link: "https://youtube.com",
     icon: SiYoutube,
   },
+  {
+    label: "Mail",
+    link: `mailto:${appConfig.email}`,
+    icon: Mail,
+    useSecondaryBg: true,
+  },
 ];
 
-function MagneticSocialLinksDemo() {
+export function MagneticSocialLinks() {
   return (
     <div className="flex w-full items-center justify-center max-w-80 lg:max-w-96">
       <div className="flex items-center justify-start space-x-3">
         {SOCIAL_LINKS.map((link) => {
           const IconComponent = link.icon;
           return (
-            <MagneticSocialLink key={link.label} link={link.link}>
+            <MagneticSocialLink
+              key={link.label}
+              link={link.link}
+              useSecondaryBg={link.useSecondaryBg}
+            >
               <IconComponent size={18} className="shrink-0" />
             </MagneticSocialLink>
           );
@@ -73,5 +93,3 @@ function MagneticSocialLinksDemo() {
     </div>
   );
 }
-
-export { MagneticSocialLinksDemo };

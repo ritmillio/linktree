@@ -1,12 +1,13 @@
 /** Header + Footer */
 import { Header } from "./_components/header";
 import { Footer } from "./_components/footer";
-import { MagneticSocialLinksDemo } from "./_components/test";
 
 import { ProfileCard } from "@/components/profile-card";
+import { MagneticSocialLinks } from "@/components/magnetic-social-links";
 import { LinkSection } from "@/components/ui/link-section";
 import { Carousel } from "@/components/ui/carousel";
 import { Time } from "@/components/time";
+
 import { Card, CardDescription, CardHeader } from "@/components/ui/card";
 
 export default function Home() {
@@ -22,7 +23,7 @@ export default function Home() {
           postsCount={48}
           verified={true}
         />
-        <MagneticSocialLinksDemo />
+        <MagneticSocialLinks />
 
         {/* WHO AM I? SECTION */}
         <LinkSection title="WHO AM I?" className="mt-10" />
