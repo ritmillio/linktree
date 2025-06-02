@@ -30,10 +30,10 @@ interface LinkProps
   icon?: React.ReactNode;
   backgroundColor?: string;
   backgroundHover?: string;
-  textColor?: string; // New prop for main text color
-  descriptionColor?: string; // New prop for description text color
-  iconColor?: string; // New prop for icon color
-  arrowColor?: string; // New prop for arrow color
+  textColor?: string;
+  descriptionColor?: string;
+  iconColor?: string;
+  arrowColor?: string;
   showArrow?: boolean;
   external?: boolean;
 }
@@ -47,12 +47,12 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
       title,
       description,
       icon,
-      backgroundColor = "bg-gradient-to-r from-gray-700 to-gray-600",
-      backgroundHover = "hover:from-gray-800 hover:to-gray-700",
-      textColor = "text-white", // Default to white
-      descriptionColor = "text-white/70", // Default to white with opacity
-      iconColor = "white", // Default to white
-      arrowColor = "text-white/70 group-hover:text-white", // Default with hover effect
+      backgroundColor = "bg-background border border-border", // Updated default
+      backgroundHover = "hover:from-black hover:to-black", // Updated default
+      textColor = "text-white",
+      descriptionColor = "text-white/70",
+      iconColor = "white",
+      arrowColor = "text-white/70 group-hover:text-white",
       showArrow = true,
       external = false,
       ...props

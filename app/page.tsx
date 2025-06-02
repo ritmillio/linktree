@@ -7,6 +7,7 @@ import { MagneticSocialLinks } from "@/components/magnetic-social-links";
 import { SectionTitle } from "@/components/ui/title";
 import { Carousel } from "@/components/ui/carousel";
 import { Time } from "@/components/time";
+import { Code } from "@/components/code";
 
 import { Card, CardDescription, CardHeader } from "@/components/ui/card";
 
@@ -18,6 +19,7 @@ import {
   SiSpotify,
   SiBuymeacoffee,
   SiClaude,
+  SiNotion,
 } from "@icons-pack/react-simple-icons";
 import { Link } from "@/components/ui/link";
 import { Code2, MessageSquare } from "lucide-react";
@@ -48,8 +50,17 @@ export default function Home() {
             </CardDescription>
           </CardHeader>
         </Card>
+
+        <Code />
         {/* LINKS SECTION */}
         <SectionTitle title="Links" className="mt-10" />
+        <Link
+          href="https://zoltanfodor.notion.site/Toasted-Links-206e0ba40a7280b8bd4bc04f6253a91d?pvs=73"
+          title="Toasted Links - Notion"
+          description="Notion"
+          icon={<SiNotion />}
+          external
+        />
         {/* Music */}
         <MusicPlatformButton
           link="https://music.youtube.com/watch?v=njBKk2sCmeY&si=XqDJrV11Dnha6mgr"
@@ -88,12 +99,6 @@ export default function Home() {
           title="ShadCN/UI Setup Guide"
           description="Complete installation walkthrough"
           icon={<Code2 />}
-          backgroundColor="bg-background border border-border"
-          backgroundHover="hover:from-black hover:to-black"
-          textColor="text-white"
-          descriptionColor="text-white/70"
-          iconColor="white"
-          arrowColor="text-white/70 group-hover:text-white"
           external
         />
 
