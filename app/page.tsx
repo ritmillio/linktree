@@ -4,7 +4,7 @@ import { Footer } from "./_components/footer";
 
 import { ProfileCard } from "@/components/profile-card";
 import { MagneticSocialLinks } from "@/components/magnetic-social-links";
-import { LinkSection } from "@/components/ui/link-section";
+import { SectionTitle } from "@/components/ui/title";
 import { Carousel } from "@/components/ui/carousel";
 import { Time } from "@/components/time";
 
@@ -16,7 +16,12 @@ import {
   SiYoutubemusic,
   SiTidal,
   SiSpotify,
+  SiBuymeacoffee,
+  SiClaude,
 } from "@icons-pack/react-simple-icons";
+import { Link } from "@/components/ui/link";
+import { Code2, MessageSquare } from "lucide-react";
+import { appConfig } from "@/config";
 
 export default function Home() {
   return (
@@ -32,9 +37,8 @@ export default function Home() {
           verified={true}
         />
         <MagneticSocialLinks />
-
         {/* WHO AM I? SECTION */}
-        <LinkSection title="WHO AM I?" className="mt-10" />
+        <SectionTitle title="WHO AM I?" className="mt-10" />
         <Card className="w-80 lg:w-96">
           <CardHeader className="px-2.5 py-4">
             <CardDescription className="text-sm text-black/75 dark:text-white/75">
@@ -44,34 +48,68 @@ export default function Home() {
             </CardDescription>
           </CardHeader>
         </Card>
-
         {/* LINKS SECTION */}
-        <LinkSection title="Links" className="mt-10" />
-
+        <SectionTitle title="Links" className="mt-10" />
         {/* Music */}
         <MusicPlatformButton
           link="https://music.youtube.com/watch?v=njBKk2sCmeY&si=XqDJrV11Dnha6mgr"
           platformName="YouTube Music"
-          customText="My favorite songs"
+          customText="My favorite songs on YouTube"
           platformIcon={<SiYoutubemusic />}
         />
-
         <MusicPlatformButton
           link="https://tidal.com/browse/playlist/1000000000000000000000000000000000000000"
           platformName="Tidal"
-          customText="My favorite songs"
+          customText="Premium playlist on Tidal"
           platformIcon={<SiTidal />}
         />
-
         <MusicPlatformButton
           link="https://open.spotify.com/show/7iQXmUT7XGuZSzAMjoNWlX?si=51bc5a30e80744d8"
           platformName="Spotify"
           customText="My favorite Podcast - The Diary of a CEO"
           platformIcon={<SiSpotify />}
         />
+        <Link
+          href={`https://buymeacoffee.com/${appConfig.tag}`}
+          title="Buy Me a Coffee"
+          description="Support my work with a coffee"
+          icon={<SiBuymeacoffee />}
+          backgroundColor="bg-[#FEDD03]"
+          backgroundHover="hover:bg-[#E6C700]"
+          textColor="text-black"
+          descriptionColor="text-black/70"
+          iconColor="black"
+          arrowColor="text-black/70 group-hover:text-black"
+          external
+        />
+
+        <Link
+          href="https://ui.shadcn.com/docs/installation"
+          title="ShadCN/UI Setup Guide"
+          description="Complete installation walkthrough"
+          icon={<Code2 />}
+          backgroundColor="bg-gradient-to-r from-black to-black border border-border"
+          backgroundHover="hover:from-black hover:to-black"
+          textColor="text-white"
+          descriptionColor="text-white/70"
+          iconColor="white"
+          arrowColor="text-white/70 group-hover:text-white"
+          external
+        />
+
+        <Link
+          href="https://claude.ai/chat/shared-thread-xyz123"
+          title="Claude AI Conversation"
+          description="Building modern web components"
+          icon={<SiClaude />}
+          backgroundColor="bg-gradient-to-r from-[#7c3aed] to-[#a855f7]"
+          backgroundHover="hover:from-[#7c3aed] hover:to-[#a855f7]"
+          className="dark:from-[#581c87] dark:to-[#7c2d12] dark:hover:from-[#581c87] dark:hover:to-[#7c2d12]"
+          external
+        />
 
         {/* WORK SECTION */}
-        <LinkSection title="Digital Work" className="mt-10" />
+        <SectionTitle title="Digital Work" className="mt-10" />
         <Carousel
           baseWidth={300}
           autoplay={true}
