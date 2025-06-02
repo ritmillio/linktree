@@ -115,7 +115,7 @@ export default function Home() {
         <div className="w-80 lg:w-96">
           <div className="w-full flex items-center justify-between gap-2.5">
             <div className="w-1/2 text-center text-xs leading-4 text-muted-foreground lg:w-96 mx-auto py-5 bg-background border border-border rounded-md flex items-center justify-center px-2.5">
-              <span className="text-zinc-50">toasty</span>
+              <span className="text-zinc-950 dark:text-zinc-50">toasty</span>
               <span className="bg-indigo-800  text-zinc-200">y</span>
               <span className="bg-orange-600  text-zinc-50">y</span>
             </div>

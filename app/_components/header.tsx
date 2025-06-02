@@ -13,26 +13,18 @@ export function Header() {
         direction="middle"
         className="w-80 lg:w-96 flex items-center justify-between bg-background border border-border rounded-md px-2.5 py-2"
       >
-        <DockIcon>
-          <span className="text-sm font-bold">Home</span>{" "}
-        </DockIcon>
+        <a href="#">
+          <DockIcon>
+            <span className="text-sm font-bold">Home</span>{" "}
+          </DockIcon>
+        </a>
         <div className="flex items-center justify-between gap-2.5">
-          <DockIcon>
-            <Icons.googleDrive className="size-6" />
-          </DockIcon>
-          <DockIcon>
-            <Icons.notion className="size-6" />
-          </DockIcon>
-          <DockIcon>
-            <Icons.whatsapp className="size-6" />
-          </DockIcon>
+          <Time timeZone="Europe/Vienna" />
         </div>
         <DockIcon>
           <ThemeToggle />
         </DockIcon>
       </Dock>
-
-      <Time timeZone="Europe/Vienna" />
     </header>
   );
 }

@@ -49,10 +49,10 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
       icon,
       backgroundColor = "bg-background border border-border", // Updated default
       backgroundHover = "hover:from-black hover:to-black", // Updated default
-      textColor = "text-white",
-      descriptionColor = "text-white/70",
-      iconColor = "white",
-      arrowColor = "text-white/70 group-hover:text-white",
+      textColor = "text-black dark:text-white",
+      descriptionColor = "text-black/70 dark:text-white/70",
+      iconColor = "black dark:white",
+      arrowColor = "text-black/70 dark:text-white/70 group-hover:text-white",
       showArrow = true,
       external = false,
       ...props
