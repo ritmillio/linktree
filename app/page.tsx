@@ -27,21 +27,25 @@ import { TextProfileRotate } from "@/components/text-profile-rotate";
 import { GalleryShowcase } from "@/components/photo-gallery";
 import { AlertLiveEvent } from "@/components/alert-live-event";
 import { Calendar } from "@/components/calendar";
+import { data, WorkHistory } from "@/components/work-history";
 
 export default function Home() {
   return (
     <div className="mx-auto max-w-xl min-h-screen flex flex-col items-center justify-center dark:bg-black bg-white gap-2.5">
       <Header />
 
-      <div className="flex-1 w-full flex flex-col items-center gap-2.5 pt-5">
-        <ProfileCard
-          name="Sophie Bennett"
-          description="A Product Designer focused on intuitive user experiences."
-          followersCount={312}
-          postsCount={48}
-          verified={true}
-        />
-        <MagneticSocialLinks />
+      <div className="flex-1 w-full flex flex-col items-center gap-2.5 pt-2.5 sm:pt-4 md:pt-5">
+        <div className="flex flex-col items-center gap-2.5 -mt-2.5 sm:-mt-4 md:-mt-5">
+          <ProfileCard
+            name="Sophie Bennett"
+            description="A Product Designer focused on intuitive user experiences."
+            followersCount={312}
+            verified={true}
+            //You can use full background image by setting isFullBg to true
+            // isFullBg={true}
+          />
+          <MagneticSocialLinks />
+        </div>
         {/* WHO AM I? SECTION */}
         <SectionTitle title="WHO AM I?" className="mt-10" />
         <Card className="w-80 lg:w-96">
@@ -104,7 +108,7 @@ export default function Home() {
         />
 
         {/* WORK SECTION */}
-        <SectionTitle title="Digital Work" className="mt-10" />
+        <SectionTitle title="Work" className="mt-10" />
         <p className="text-center text-xs leading-4 text-muted-foreground w-80 lg:w-96 mx-auto py-5 bg-background border border-border rounded-md flex items-center justify-center px-2.5">
           I create and sell various digital products including premium UI
           components, website templates, and design systems. Each product is
@@ -130,6 +134,11 @@ export default function Home() {
             </a>
           </div>
         </div>
+        <WorkHistory
+          className="w-80 lg:w-96"
+          data={data}
+          title="Work History"
+        />
 
         {/* Music */}
         <SectionTitle title="My favorite tunes" className="mt-10" />

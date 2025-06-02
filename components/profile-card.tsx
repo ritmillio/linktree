@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Eye, Paperclip } from "lucide-react";
+import { Eye } from "lucide-react";
 import Image from "next/image";
 
 type ProfileCardProps = {
@@ -10,7 +10,6 @@ type ProfileCardProps = {
   name: string;
   description: string;
   followersCount: number;
-  postsCount: number;
   verified?: boolean;
   isFullBg?: boolean;
   onFollow?: () => void;
@@ -21,7 +20,6 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
   name,
   description,
   followersCount,
-  postsCount,
   verified = true,
   isFullBg = false,
 }) => {
@@ -71,11 +69,6 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
               <div className="flex items-center space-x-1">
                 <Eye size={15} className="text-white" />
                 <span className="text-sm font-medium">{followersCount}</span>
-              </div>
-
-              <div className="flex items-center space-x-1">
-                <Paperclip size={15} className="text-white" />
-                <span className="text-sm font-medium">{postsCount}</span>
               </div>
             </div>
           </div>
@@ -127,11 +120,6 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
           <div className="flex items-center space-x-1">
             <Eye size={15} className="text-gray-800 dark:text-white" />
             <span className="text-sm font-medium">{followersCount}</span>
-          </div>
-
-          <div className="flex items-center space-x-1">
-            <Paperclip size={15} className="text-gray-800 dark:text-white" />
-            <span className="text-sm font-medium">{postsCount}</span>
           </div>
         </div>
       </div>
