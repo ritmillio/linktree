@@ -6,7 +6,7 @@ import { SiTwitch } from "@icons-pack/react-simple-icons";
 function AlertLiveEvent() {
   return (
     <Alert
-      className="w-80 lg:w-96 py-2 px-1.5 rounded-md shadow-none bg-[#AA6FFF]"
+      className="w-80 lg:w-96 group-hover:scale-110 py-2 px-1.5 rounded-md shadow-none bg-[#AA6FFF] transition-all duration-300 hover:cursor-grab"
       layout="row"
       isNotification
     >
@@ -20,7 +20,9 @@ function AlertLiveEvent() {
             <p className="text-sm font-medium text-white">Live in 5 hours</p>
             <p className="text-xs text-muted">Twitch Stream</p>
           </div>
-          <Button size="sm">Notify me</Button>
+          <Button size="sm" className="cursor-pointer">
+            Notify me
+          </Button>
         </div>
       </div>
       {/* Bottom accent line */}
