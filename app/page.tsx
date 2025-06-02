@@ -10,6 +10,14 @@ import { Time } from "@/components/time";
 
 import { Card, CardDescription, CardHeader } from "@/components/ui/card";
 
+/** Music */
+import MusicPlatformButton from "@/components/music-link";
+import {
+  SiYoutubemusic,
+  SiTidal,
+  SiSpotify,
+} from "@icons-pack/react-simple-icons";
+
 export default function Home() {
   return (
     <div className="mx-auto max-w-xl min-h-screen flex flex-col items-center justify-center dark:bg-black bg-white gap-2.5">
@@ -39,6 +47,28 @@ export default function Home() {
 
         {/* LINKS SECTION */}
         <LinkSection title="Links" className="mt-10" />
+
+        {/* Music */}
+        <MusicPlatformButton
+          link="https://music.youtube.com/watch?v=njBKk2sCmeY&si=XqDJrV11Dnha6mgr"
+          platformName="YouTube Music"
+          customText="My favorite songs"
+          platformIcon={<SiYoutubemusic />}
+        />
+
+        <MusicPlatformButton
+          link="https://tidal.com/browse/playlist/1000000000000000000000000000000000000000"
+          platformName="Tidal"
+          customText="My favorite songs"
+          platformIcon={<SiTidal />}
+        />
+
+        <MusicPlatformButton
+          link="https://open.spotify.com/show/7iQXmUT7XGuZSzAMjoNWlX?si=51bc5a30e80744d8"
+          platformName="Spotify"
+          customText="My favorite Podcast - The Diary of a CEO"
+          platformIcon={<SiSpotify />}
+        />
 
         {/* WORK SECTION */}
         <LinkSection title="Digital Work" className="mt-10" />
