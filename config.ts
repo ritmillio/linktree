@@ -42,7 +42,7 @@ export const appConfig = {
     socialLinksSmall: [
       {
         label: "Visit my GitHub profile",
-        link: "https://github.com",
+        link: "https://github.com/ritmillio",
         icon: SiGithub,
       },
       {
