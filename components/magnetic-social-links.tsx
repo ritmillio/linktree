@@ -2,13 +2,6 @@
 
 import React from "react";
 import { Magnetic } from "@/components/ui/magnetic";
-import {
-  SiGithub,
-  SiInstagram,
-  SiX,
-  SiYoutube,
-} from "@icons-pack/react-simple-icons";
-import { Mail } from "lucide-react";
 import { appConfig } from "@/config";
 
 type SocialLink = {
@@ -47,33 +40,7 @@ function MagneticSocialLink({
   );
 }
 
-const SOCIAL_LINKS: SocialLink[] = [
-  {
-    label: "Visit my GitHub profile",
-    link: "https://github.com",
-    icon: SiGithub,
-  },
-  {
-    label: "Follow me on Twitter",
-    link: "https://twitter.com",
-    icon: SiX,
-  },
-  {
-    label: "Follow me on Instagram",
-    link: "https://instagram.com",
-    icon: SiInstagram,
-  },
-  {
-    label: "Subscribe to my YouTube channel",
-    link: "https://youtube.com",
-    icon: SiYoutube,
-  },
-  {
-    label: "Send me an email",
-    link: `mailto:${appConfig.email}`,
-    icon: Mail,
-  },
-];
+const SOCIAL_LINKS = appConfig.profile.socialLinksSmall as SocialLink[];
 
 export function MagneticSocialLinks() {
   return (

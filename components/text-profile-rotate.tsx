@@ -1,7 +1,7 @@
 "use client";
 
 import { LayoutGroup, motion } from "motion/react";
-
+import { appConfig } from "@/config";
 import { TextRotate } from "@/components/ui/text-rotate";
 
 export function TextProfileRotate() {
@@ -14,17 +14,10 @@ export function TextProfileRotate() {
             layout
             transition={{ type: "spring", damping: 30, stiffness: 400 }}
           >
-            I have an interest in{" -"}
+            {appConfig.whoAmI.textProfileRotate.title}{" "}
           </motion.span>
           <TextRotate
-            texts={[
-              "product design",
-              "software development",
-              "design systems",
-              "AI",
-              "FUN",
-              "and MORE 🕶️",
-            ]}
+            texts={appConfig.whoAmI.textProfileRotate.texts}
             mainClassName="text-black dark:text-white px-2 sm:px-2 md:px-3 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-md"
             staggerFrom={"last"}
             initial={{ y: "100%" }}

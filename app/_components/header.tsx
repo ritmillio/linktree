@@ -31,7 +31,7 @@ export function Header() {
           </DockIcon>
         </a>
         <div className="flex items-center justify-between gap-2.5">
-          <Time timeZone="Europe/Vienna" />
+          <Time timeZone={appConfig.timeZone} />
         </div>
         <DockIcon>
           <ThemeToggle />

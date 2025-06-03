@@ -5,6 +5,7 @@ import {
   DisclosureContent,
   DisclosureTrigger,
 } from "@/components/ui/disclosure";
+import { appConfig } from "@/config";
 
 function Code() {
   return (
@@ -14,21 +15,15 @@ function Code() {
           className="w-full py-2 text-left px-1 text-sm cursor-pointer"
           type="button"
         >
-          My Favorite Code Snippet
+          {appConfig.whoAmI.codeSnippet.title}
         </button>
       </DisclosureTrigger>
       <DisclosureContent>
         <div className="overflow-hidden pb-3">
           <div className="pt-1 font-mono text-sm">
-            <p>A beautiful way to debounce function calls</p>
+            <p>{appConfig.whoAmI.codeSnippet.description}</p>
             <pre className="mt-2 rounded-md bg-zinc-100 p-2 text-xs dark:bg-zinc-950 overflow-auto">
-              {`const debounce = (fn, delay) => {
-                let timeoutId;
-                return (...args) => {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => fn(...args), delay);
-        };
-    };`}
+              {appConfig.whoAmI.codeSnippet.code}
             </pre>
           </div>
         </div>

@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Eye } from "lucide-react";
 import Image from "next/image";
+import { appConfig } from "@/config";
 
 type ProfileCardProps = {
   variant?: "light" | "dark";
@@ -16,12 +17,12 @@ type ProfileCardProps = {
 };
 
 export const ProfileCard: React.FC<ProfileCardProps> = ({
-  profileImage = "https://images.unsplash.com/photo-1741802872469-b404a312fa91?q=80&w=640&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  name,
-  description,
-  followersCount,
+  profileImage = appConfig.profile.imgUrl,
+  name = appConfig.name,
+  description = appConfig.shortDescription,
+  followersCount = appConfig.profile.followersCount,
   verified = true,
-  isFullBg = false,
+  isFullBg = appConfig.profile.isFullBackground,
 }) => {
   if (isFullBg) {
     return (
