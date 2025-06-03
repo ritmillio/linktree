@@ -17,7 +17,8 @@ function AlertLiveEvent() {
         <div className="flex grow items-center justify-between lg:gap-32 min-w-60 lg:min-w-72">
           <div className="space-y-1">
             <p className="text-sm font-medium text-white">Live in 5 hours</p>
-            <p className="text-xs text-muted">Twitch Stream</p>
+            <p className="text-xs text-white/80">Twitch Stream</p>{" "}
+            {/* Changed from text-muted */}
           </div>
           <Button size="sm" className="cursor-pointer">
             Notify me
