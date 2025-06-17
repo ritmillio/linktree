@@ -136,7 +136,7 @@ export const appConfig = {
         description: "Build Expo apps with ease",
         href: "https://github.com/ritmillio/expo-router-starter-kit",
         icon: SiGithub,
-        backgroundColor: "bg-gradient-to-r from-[#000000] to-[#000000]",
+        backgroundColor: "dark:bg-gradient-to-r from-[#000000] to-[#000000]",
         backgroundHover: "hover:from-[#000000] hover:to-[#000000]",
         className:
           "dark:from-[#000000] dark:to-[#000000] dark:hover:from-[#000000] dark:hover:to-[#000000] border border-border",

@@ -195,6 +195,8 @@ const animation = {
 };
 
 const WorkItem = ({ item, index }: WorkItemProps) => {
+  const { theme } = useTheme(); // Move hook call to top level
+
   return (
     <motion.div
       className="group flex items-center justify-between gap-2 p-4 py-3 hover:bg-accent/50 transition-colors"
@@ -232,10 +234,10 @@ const WorkItem = ({ item, index }: WorkItemProps) => {
                 height={20}
                 className={cn("h-5 w-5", {
                   invert:
-                    (useTheme().theme === "dark" &&
+                    (theme === "dark" &&
                       (item.label.includes("incaseof.law") ||
                         item.label.includes("Nailster"))) ||
-                    (useTheme().theme === "light" &&
+                    (theme === "light" &&
                       (item.label.includes("trace") ||
                         item.label.includes("Nespresso"))),
                 })}
