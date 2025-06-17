@@ -63,7 +63,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
               )}
             </div>
             <p className="mt-0 text-center text-sm text-gray-200">
-              @sophiebennett
+              @{appConfig.tag}
             </p>
             <p className="mb-6 text-center text-gray-200">{description}</p>
             <div className="flex items-center justify-between">
@@ -84,7 +84,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
         <Image
           src={profileImage}
           alt={`${name}'s profile`}
-          className="aspect-square w-full object-cover max-h-80"
+          className="aspect-square w-full object-cover max-h-80 grayscale-75"
           width={400}
           height={400}
           priority
@@ -113,7 +113,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
           )}
         </div>
         <p className="-mt-2 text-sm text-gray-800 dark:text-gray-200">
-          @sophiebennett
+          @{appConfig.tag}
         </p>
         <p className="mb-6 text-gray-800 dark:text-gray-200">{description}</p>
 

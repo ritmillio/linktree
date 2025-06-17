@@ -22,9 +22,9 @@ export default function MusicSection() {
       <div className="flex flex-col gap-2.5 justify-center items-center">
         {appConfig.music.musicPlatforms.map((platform) => (
           <MusicPlatformButton
-            key={platform.name}
+            key={platform.key}
             link={platform.link}
-            platformName={platform.name}
+            platformName={platform.key}
             customText={platform.customText}
             platformIcon={<platform.icon />}
           />

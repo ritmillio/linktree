@@ -1,27 +1,29 @@
 import { Code2, Mail } from "lucide-react";
 import {
   SiGithub,
-  SiX,
-  SiInstagram,
   SiYoutube,
   SiNotion,
-  SiBuymeacoffee,
   SiClaude,
   SiSpotify,
-  SiTidal,
   SiYoutubemusic,
 } from "@icons-pack/react-simple-icons";
 
-const email = "sophie@bennett.com";
+import trace from "@/app/assets/trace.svg"
+import incaseoflaw from "@/app/assets/incaseoflaw.svg"
+import munch from "@/app/assets/munch.svg"
+import nespresso from "@/app/assets/nespresso.svg"
+import nailster from "@/app/assets/nailster.svg"
+
+const email = "zoltan@fdr.digital";
 
 export const appConfig = {
-  name: "Sophie Bennett",
-  tag: "sophiebennett",
+  name: "Zoltan Fodor",
+  tag: "zoltanfodor",
   email: email,
   language: "en",
 
   /** Short Description should be no more than 150 characters */
-  shortDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  shortDescription: "I think of myself as a builder who connects people, technology and business. I'm always exploring new technologies and pushing the boundaries of what's possible.",
 
   /** Your location cordinates to fetch weather data */
   location: {
@@ -36,8 +38,8 @@ export const appConfig = {
   /** SECTIONS */
   profile: {
     imgUrl:
-      "https://images.unsplash.com/photo-1741802872469-b404a312fa91?q=80&w=640&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    followersCount: 312, // This could be dynamic as well (write a sum function to get the total number of followers)
+      "https://smqp9londt.ufs.sh/f/G6x7iQkM307VIvXlXbvclNOqZPEDajMe73gR8zhtk6QKFuf4",
+    followersCount: 312,
     isFullBackground: false,
     socialLinksSmall: [
       {
@@ -45,19 +47,19 @@ export const appConfig = {
         link: "https://github.com/ritmillio",
         icon: SiGithub,
       },
-      {
-        label: "Follow me on Twitter",
-        link: "https://twitter.com",
-        icon: SiX,
-      },
-      {
-        label: "Follow me on Instagram",
-        link: "https://instagram.com",
-        icon: SiInstagram,
-      },
+      // {
+      //   label: "Follow me on Twitter",
+      //   link: "https://twitter.com",
+      //   icon: SiX,
+      // },
+      // {
+      //   label: "Follow me on Instagram",
+      //   link: "https://instagram.com",
+      //   icon: SiInstagram,
+      // },
       {
         label: "Subscribe to my YouTube channel",
-        link: "https://youtube.com",
+        link: "https://www.youtube.com/@ritmillio",
         icon: SiYoutube,
       },
       {
@@ -71,11 +73,15 @@ export const appConfig = {
   whoAmI: {
     sectionTitle: "WHO AM I?",
     description:
-      "I'm a product designer focused on intuitive user experiences. I'm currently working at Google as a product designer.",
+      "I'm a passionate technologist and problem-solver who thrives at the intersection of innovation and practicality. With a deep understanding of both technical and business domains, I bridge the gap between complex systems and user needs. My approach combines creative thinking with methodical execution, always seeking elegant solutions to challenging problems. I'm particularly drawn to emerging technologies and their potential to transform how we work and live.",
     codeSnippet: {
-      title: "My Favorite Code Snippet",
-      description: "A beautiful way to debounce function calls",
-      code: "const debounce = (fn, delay) => { let timeoutId; return (...args) => { clearTimeout(timeoutId); timeoutId = setTimeout(() => fn(...args), delay); }; };",
+      title: "TS POWER - Click Me",
+      description: "Advanced Type Manipulation",
+      code: `type DeepReadonly<T> = {
+        readonly [P in keyof T]: T[P] extends object 
+          ? DeepReadonly<T[P]> 
+          : T[P];
+      };`,
     },
     //CAL.COM INTEGRATION
     calendar: {
@@ -88,12 +94,11 @@ export const appConfig = {
     textProfileRotate: {
       title: "I have an interest in",
       texts: [
-        "product design",
-        "software development",
-        "design systems",
+        "Product Design",
+        "Software Development",
+        "Design Systems",
         "AI",
-        "FUN",
-        "and MORE 🕶️",
+        "and MORE",
       ],
     },
   },
@@ -102,28 +107,15 @@ export const appConfig = {
     sectionTitle: "Links",
     links: [
       {
-        title: "Toasted Links - Notion",
+        title: "Daily Boost",
         description: "Notion",
-        href: "https://zoltanfodor.notion.site/Toasted-Links-206e0ba40a7280b8bd4bc04f6253a91d?pvs=73",
+        href: "https://zoltanfodor.notion.site/DAILY-MOTIVATION-206e0ba40a7280b8bd4bc04f6253a91d?source=copy_link",
         icon: SiNotion,
         external: true,
       },
       {
-        title: "Buy Me a Coffee",
-        description: "Support my work with a coffee",
-        href: `https://buymeacoffee.com/`,
-        icon: SiBuymeacoffee,
-        backgroundColor: "bg-[#FEDD03]",
-        backgroundHover: "hover:bg-[#E6C700]",
-        textColor: "text-black",
-        descriptionColor: "text-black/70",
-        iconColor: "black",
-        arrowColor: "text-black/70 group-hover:text-black",
-        external: true,
-      },
-      {
-        title: "ShadCN/UI Setup Guide",
-        description: "Complete installation walkthrough",
+        title: "I love this lib",
+        description: "Just use shadcn/ui!",
         href: "https://ui.shadcn.com/docs/installation",
         icon: Code2,
         external: true,
@@ -131,7 +123,7 @@ export const appConfig = {
       {
         title: "Claude AI Conversation",
         description: "Building modern web components",
-        href: "https://claude.ai/chat/shared-thread-xyz123",
+        href: "https://claude.ai/share/f8c44692-3e04-49e3-8f07-49cdb29a4163",
         icon: SiClaude,
         backgroundColor: "bg-gradient-to-r from-[#7c3aed] to-[#a855f7]",
         backgroundHover: "hover:from-[#7c3aed] hover:to-[#a855f7]",
@@ -139,13 +131,25 @@ export const appConfig = {
           "dark:from-[#581c87] dark:to-[#7c2d12] dark:hover:from-[#581c87] dark:hover:to-[#7c2d12]",
         external: true,
       },
+      {
+        title: "expo-router-starter-kit",
+        description: "Build Expo apps with ease",
+        href: "https://github.com/ritmillio/expo-router-starter-kit",
+        icon: SiGithub,
+        backgroundColor: "bg-gradient-to-r from-[#000000] to-[#000000]",
+        backgroundHover: "hover:from-[#000000] hover:to-[#000000]",
+        className:
+          "dark:from-[#000000] dark:to-[#000000] dark:hover:from-[#000000] dark:hover:to-[#000000] border border-border",
+        external: true,
+      },
+      
     ],
   },
 
   work: {
     sectionTitle: "Work",
     description:
-      "I create and sell various digital products including premium UI components, website templates, and design systems. Each product is crafted with attention to detail and modern development practices. Check out my store for high-quality digital assets that can elevate your projects.",
+      "I build software for startups and scaleups and help them grow. I also build digital products, contribute to open source projects and share my knowledge on Twitch times to times. I am always up for a virtual coffee chat about new opportunities.",
     boxes: {
       firstBox: {
         html: `<div class="flex items-center justify-center">
@@ -157,10 +161,10 @@ export const appConfig = {
       secondBox: {
         html: `<div class="flex items-center justify-center">
           <span class="bg-amber-300 text-black hover:cursor-grab hover:underline">
-            ui.toasted.studio
+            toasted.studio
           </span>
         </div>`,
-        href: "https://ui.toasted.studio/",
+        href: "https://toasted.studio/",
         external: true,
       },
     },
@@ -168,37 +172,46 @@ export const appConfig = {
     workHistory: [
       {
         id: "1",
-        label: "Senior Frontend Developer",
-        value: "frontend_dev",
+        label: "CTO - trace.deal",
+        value: "cto",
         description:
-          "Led the development of React applications with TypeScript and modern UI frameworks",
-        icon: "💻",
+          "We built a platform for small to medium sized Venture Capital firms to manage their deals, analyze Pitch Decks with AI and share the data with their partners.",
+        icon: trace,
       },
       {
         id: "2",
-        label: "Full Stack Engineer",
+        label: "Senior Software Engineer - incaseof.law",
         value: "fullstack_eng",
         description:
-          "Built end-to-end web applications using Node.js, React, and PostgreSQL",
-        icon: "🚀",
+          "We built an end-to-end platform for notaries to manage their dunning process and share the data with their partners.",
+        icon: incaseoflaw,
       },
       {
         id: "3",
-        label: "UI/UX Designer",
-        value: "ui_designer",
+        label: "Senior Software Engineer - Munch",
+        value: "software_engineer",
         description:
-          "Designed user interfaces and experiences for mobile and web applications",
-        icon: "🎨",
+          "Munch is a platform for sustainable food ordering that helps users save money while reducing waste.",
+        icon: munch,
       },
       {
         id: "4",
-        label: "DevOps Engineer",
-        value: "devops_eng",
+        label: "Ecommerce Developer - Nespresso",
+        value: "ecommerce_developer",
         description:
-          "Managed CI/CD pipelines, AWS infrastructure, and deployment automation",
-        icon: "⚙️",
-        custom: "Current",
+          "I helped Nespresso to build custom ecommerce solutions to make their ecommerce platform more efficient, fast and customer friendly.",
+        icon: nespresso,
       },
+      {
+        id: "5",
+        label: "Frontend Developer - Nailster",
+        value: "frontend_developer",
+        description:
+          "Biggest nail ecommerce platform in the Nordics. I was working on custom frontend solutions to achive more conversions and better user experience.",
+        icon: nailster,
+        iconClassName: "invert",
+      },
+
     ],
   },
 
@@ -218,19 +231,15 @@ export const appConfig = {
     sectionTitle: "Music",
     musicPlatforms: [
     {
-      name: "YouTube Music",
-      link: "https://music.youtube.com/watch?v=njBKk2sCmeY&si=XqDJrV11Dnha6mgr",
-      customText: "My favorite songs on YouTube",
+      name: "YouTube Music - My coding playlist",
+      key: "YouTube Music",
+      link: "https://music.youtube.com/playlist?list=RDCLAK5uy_nvRGXHpFzon8qbPTZhuoSq3WO4ccYvmHM&playnext=1&si=zznqzDnWFKrhG1jQ",
+      customText: "My coding playlist - Electronic Focus ",
       icon: SiYoutubemusic,
     },
     {
-      name: "Tidal",
-      link: "https://tidal.com/browse/playlist/1000000000000000000000000000000000000000",
-      customText: "Premium playlist on Tidal",
-      icon: SiTidal,
-    },
-    {
-      name: "Spotify",
+      name: "Spotify - My favorite Podcast",
+      key: "Spotify",
       link: "https://open.spotify.com/show/7iQXmUT7XGuZSzAMjoNWlX?si=51bc5a30e80744d8",
       customText: "My favorite Podcast - The Diary of a CEO",
       icon: SiSpotify,

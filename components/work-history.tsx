@@ -4,6 +4,8 @@ import React, { useEffect } from "react";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { ChevronDownIcon, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+import { useTheme } from "next-themes";
 
 type TWorkData = {
   id: string;
@@ -209,7 +211,37 @@ const WorkItem = ({ item, index }: WorkItemProps) => {
           layoutId={`icon-${item.id}`}
           className="flex h-10 w-10 items-center justify-center rounded-full border border-input bg-background"
         >
-          {item.icon}
+          {item.icon ? (
+            typeof item.icon === "string" ? (
+              item.icon.startsWith("data:image/svg+xml") ? (
+                <Image
+                  src={item.icon}
+                  alt={item.label}
+                  width={20}
+                  height={20}
+                  className="h-5 w-5 invert"
+                />
+              ) : (
+                <span className="text-lg invert">{item.icon}</span>
+              )
+            ) : (
+              <Image
+                src={item.icon}
+                alt={item.label}
+                width={20}
+                height={20}
+                className={cn("h-5 w-5", {
+                  invert:
+                    (useTheme().theme === "dark" &&
+                      (item.label.includes("incaseof.law") ||
+                        item.label.includes("Nailster"))) ||
+                    (useTheme().theme === "light" &&
+                      (item.label.includes("trace") ||
+                        item.label.includes("Nespresso"))),
+                })}
+              />
+            )
+          ) : null}
         </motion.div>
         <motion.div layout className="flex flex-col flex-1 min-w-0">
           <motion.strong

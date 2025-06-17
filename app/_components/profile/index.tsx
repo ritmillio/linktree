@@ -10,7 +10,7 @@ export default function ProfileSection() {
         description={appConfig.shortDescription}
         followersCount={appConfig.profile.followersCount}
         verified={true}
-        isFullBg={appConfig.profile.isFullBackground}
+        isFullBg={false}
       />
       <MagneticSocialLinks />
     </section>
