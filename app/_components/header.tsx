@@ -4,15 +4,18 @@ import { Dock, DockIcon } from "@/components/ui/dock";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Time } from "@/components/time";
 
-import { Barrio } from "next/font/google";
+import { Inter } from "next/font/google";
 import { appConfig } from "@/config";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
-const barrio = Barrio({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-barrio",
+  weight: ["700"],
+  variable: "--font-inter",
+  display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 export function Header() {
@@ -24,7 +27,7 @@ export function Header() {
       >
         <a href="#">
           <DockIcon>
-            <span className={`text-2xl font-bold ${barrio.className}`}>
+            <span className={`text-2xl font-bold ${inter.className}`}>
               {appConfig.name.slice(0, 1).toUpperCase() +
                 appConfig.name.split(" ")[1].slice(0, 1).toUpperCase()}
             </span>{" "}
