@@ -1,4 +1,4 @@
-import { Code2, Mail } from "lucide-react";
+import { Code2, Mail, EthernetPort } from "lucide-react";
 import {
   SiGithub,
   SiYoutube,
@@ -106,6 +106,17 @@ export const appConfig = {
   links: {
     sectionTitle: "Links",
     links: [
+      {
+        title: "fdr.digital",
+        description: "My personal website",
+        href: "https://fdr.digital",
+        icon: EthernetPort,
+        backgroundColor: "bg-gradient-to-r from-[#bccae0] dark:from-[#004ac2] to-[#8ba9fc] dark:to-[#bccae0]",
+        backgroundHover: "hover:from-[#2563eb] hover:to-[#1e40af]",
+        className:
+          "dark:from-[#1e3a8a] dark:to-[#1e40af] dark:hover:from-[#1e40af] dark:hover:to-[#1d4ed8]",
+        external: true,
+      },
       {
         title: "Daily Boost",
         description: "Notion",
